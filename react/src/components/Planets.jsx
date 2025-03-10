@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CharacterCard from "./CharacterCard";
+import PlanetCard from "./PlanetCard";
 
-export default function CharacterFeed() {
+export default function Home() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +13,7 @@ export default function CharacterFeed() {
         const json_response = await response.json();
         setData(json_response);
       } catch (error) {
-        console.error("Error fetching characters:", error);
+        console.error("Error fetching socks:", error);
       }
     };
     fetchData();
