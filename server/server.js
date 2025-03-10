@@ -39,3 +39,35 @@ app.get("/api/characters", async (req, res) => {
     console.log(e);
   }
 });
+
+app.get("/api/characters/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("characters");
+    const character = await collection.findOne({ id: parseInt(id) });
+    console.log(character);
+    res.json(character);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/api/characters/:id/films", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films_characters");
+    const characterFilmsList = await collection
+      .find({ character_id: parseInt(id) })
+      .toArray();
+    console.log(characterFilmsList);
+    res.json(characterFilmsList);
+  } catch (e) {
+    console.log(e);
+  }
+});
