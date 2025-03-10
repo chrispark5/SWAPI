@@ -10,11 +10,11 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="film" />
-        
-      </Routes>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </>
   );
 }
