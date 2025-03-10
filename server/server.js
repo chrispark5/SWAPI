@@ -84,3 +84,28 @@ app.get("/api/planets/:id/characters", async (req, res) => {
     console.log(e);
   }
 });
+
+app.get("/api/films/:id/planets", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films_planets");
+    const filmPlanetsList = await collection
+      .find({ film_id: parseInt(id) })
+      .toArray();
+    const planetIds = filmPlanetsList.flatMap(
+      (film) => film.planet_id
+    );
+
+    const planetCollection = db.collection("planets");
+    const planets = await planetCollection
+      .find({ id: { $in:  planetIds } })
+      .toArray();
+    console.log(planets);
+    res.json(planets);
+  } catch (e) {
+    console.log(e);
+  }
+});
