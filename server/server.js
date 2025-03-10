@@ -24,3 +24,14 @@ app.get("/api/planets", async (req, res) => {
     console.log(e);
   }
 });
+
+app.get("/api/films", async (req, res) => {
+  try {
+    res.status(200).send({
+      status: "success",
+      message: "film receieved",
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
