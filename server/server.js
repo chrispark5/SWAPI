@@ -71,7 +71,6 @@ app.get("/api/characters/:id/films", async (req, res) => {
     const filmCollection = db.collection("films");
     const films = await filmCollection.find({ id: { $in: filmIds } }).toArray();
     console.log(films);
-
     res.json(films);
   } catch (e) {
     console.log(e);
