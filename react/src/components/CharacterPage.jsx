@@ -1,4 +1,4 @@
-import { Box, Container, Paper } from "@mui/material";
+import { Box, Container, Paper, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FilmFeed from "./FilmFeed";
@@ -27,6 +27,7 @@ export default function CharacterPage(props) {
     };
     fetchData();
   }, [id]);
+
   useEffect(() => {
     const fetchHomeworld = async () => {
       if (character && character.homeworld) {
@@ -49,58 +50,64 @@ export default function CharacterPage(props) {
   }, [character]);
 
   return (
-    <div>
-      <h1>{character.name}</h1>
-      <Box
-        component="section"
-        sx={{
-          p: 2,
-          border: "1px dashed grey",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Paper
-          elevation={3}
-          style={{
-            backgroundColor: "grey",
-            borderRadius: "10px",
-            margin: "10px",
-            width: "33%",
-          }}
-        >
-          {character.mass}
-        </Paper>
-        <Paper
-          elevation={3}
-          style={{
-            backgroundColor: "grey",
-            borderRadius: "10px",
-            margin: "10px",
-            width: "33%",
-          }}
-        >
-          {character.height} inches
-        </Paper>
-        <Paper
-          elevation={3}
-          style={{
-            backgroundColor: "grey",
-            borderRadius: "10px",
-            margin: "10px",
-            width: "33%",
-          }}
-        >
-          {character.gender}
-        </Paper>
-      </Box>
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        {character.name}
+      </Typography>
+      <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid item xs={12} sm={4}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: 2,
+              backgroundColor: "lightgrey",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h6">Mass</Typography>
+            <Typography variant="body1">{character.mass}</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: 2,
+              backgroundColor: "lightgrey",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h6">Height</Typography>
+            <Typography variant="body1">{character.height} inches</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: 2,
+              backgroundColor: "lightgrey",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h6">Gender</Typography>
+            <Typography variant="body1">{character.gender}</Typography>
+          </Paper>
+        </Grid>
+      </Grid>
 
-      <h2>Homeworld</h2>
+      <Typography variant="h5" component="h2" gutterBottom>
+        Homeworld
+      </Typography>
       <PlanetCard planet={{ name: homeworld.name, id: character.homeworld }} />
 
-      <h2>Films appeared in</h2>
+      <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>
+        Films appeared in
+      </Typography>
       <FilmFeed characterId={id} />
-    </div>
+    </Container>
   );
 }
