@@ -68,8 +68,11 @@ app.get("/api/characters/:id/films", async (req, res) => {
     const filmIds = characterFilmsList.flatMap(
       (character) => character.film_id
     );
-    console.log(filmIds);
-    res.json(filmIds);
+    const filmCollection = db.collection("films");
+    const films = await filmCollection.find({ id: { $in: filmIds } }).toArray();
+    console.log(films);
+
+    res.json(films);
   } catch (e) {
     console.log(e);
   }
