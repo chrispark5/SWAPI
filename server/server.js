@@ -65,8 +65,11 @@ app.get("/api/characters/:id/films", async (req, res) => {
     const characterFilmsList = await collection
       .find({ character_id: parseInt(id) })
       .toArray();
-    console.log(characterFilmsList);
-    res.json(characterFilmsList);
+    const filmIds = characterFilmsList.flatMap(
+      (character) => character.film_id
+    );
+    console.log(filmIds);
+    res.json(filmIds);
   } catch (e) {
     console.log(e);
   }
