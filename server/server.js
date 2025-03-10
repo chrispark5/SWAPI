@@ -39,3 +39,80 @@ app.get("/api/characters", async (req, res) => {
     console.log(e);
   }
 });
+
+app.get("/api/films", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films");
+    const filmsArray = await collection.find({}).toArray();
+    console.log(filmsArray);
+    res.json(filmsArray);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/api/films/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films");
+    const film = await collection.findOne({ id: parseInt(id) });
+    console.log(film);
+    res.json(film);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/api/films/:id/characters", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films_characters");
+    const filmCharactersList = await collection
+      .find({ film_id: parseInt(id) })
+      .toArray();
+    const characterIds = filmCharactersList.flatMap(
+      (film) => film.character_id
+    );
+
+    const characterCollection = db.collection("characters");
+    const characters = await characterCollection.find({ id: { $in: characterIds } }).toArray();
+    console.log(characters);
+
+    res.json(characters);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/api/films/:id/planets", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("films_planets");
+    const filmPlanetsList = await collection
+      .find({ film_id: parseInt(id) })
+      .toArray();
+    const planetIds = filmPlanetsList.flatMap(
+      (film) => film.planet_id
+    );
+
+    const planetCollection = db.collection("planets");
+    const planets = await planetCollection
+      .find({ id: { $in:  planetIds } })
+      .toArray();
+    console.log(planets);
+    res.json(planets);
+  } catch (e) {
+    console.log(e);
+  }
+});
