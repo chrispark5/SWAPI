@@ -81,8 +81,12 @@ app.get("/api/films/:id/characters", async (req, res) => {
     const characterIds = filmCharactersList.flatMap(
       (film) => film.character_id
     );
-    console.log(characterIds);
-    res.json(characterIds);
+
+    const characterCollection = db.collection("characters");
+    const characters = await characterCollection.find({ id: { $in: characterIds } }).toArray();
+    console.log(characters);
+
+    res.json(characters);
   } catch (e) {
     console.log(e);
   }
@@ -101,8 +105,13 @@ app.get("/api/films/:id/planets", async (req, res) => {
     const planetIds = filmPlanetsList.flatMap(
       (film) => film.planet_id
     );
-    console.log(planetIds);
-    res.json(planetIds);
+
+    const planetCollection = db.collection("planets");
+    const planets = await planetCollection
+      .find({ id: { $in:  planetIds } })
+      .toArray();
+    console.log(planets);
+    res.json(planets);
   } catch (e) {
     console.log(e);
   }
