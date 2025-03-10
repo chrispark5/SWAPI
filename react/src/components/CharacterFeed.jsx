@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Character from "./Character";
+import CharacterCard from "./CharacterCard";
 
-export default function Characters() {
+export default function CharacterFeed() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +22,7 @@ export default function Characters() {
   return (
     <>
       {data.map((character) => (
-        <Character key={character.id} character={character} />
+        <CharacterCard key={character.id} character={character} />
       ))}
     </>
   );
