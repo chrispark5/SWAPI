@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Character from "./Character";
 
 export default function Characters() {
   const [data, setData] = useState([]);
@@ -21,7 +22,7 @@ export default function Characters() {
   return (
     <>
       {data.map((character) => (
-        <p>{character.name}</p>
+        <Character key={character.id} character={character} />
       ))}
     </>
   );
