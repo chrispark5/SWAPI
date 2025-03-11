@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import FilmCard from "./FilmCard";
 import { useParams } from "react-router-dom";
-import { useParams } from "react-router-dom";
 export default function FilmFeed(props) {
   const [data, setData] = useState([]);
   const [filmsWithCharacter, setFilmsWithCharacter] = useState([]);
