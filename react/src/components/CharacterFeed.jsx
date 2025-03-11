@@ -13,7 +13,7 @@ export default function CharacterFeed() {
         const json_response = await response.json();
         setData(json_response);
       } catch (error) {
-        console.error("Error fetching socks:", error);
+        console.error("Error fetching characters:", error);
       }
     };
     fetchData();
