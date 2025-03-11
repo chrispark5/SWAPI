@@ -116,7 +116,7 @@ export default function Planet() {
       {films.length > 0 && (
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6">Films</Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} justifyContent={"center"}>
             {films.map((film, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper
@@ -129,7 +129,7 @@ export default function Planet() {
                   }}
                 >
                   <Typography variant="body1">{film.title}</Typography>
-                  <FilmCard film={{ name: film.title, id: film.id }} />
+                  <FilmCard film={{ title: film.title, id: film.id }} />
                 </Paper>
               </Grid>
             ))}
@@ -139,7 +139,7 @@ export default function Planet() {
       {characters.length > 0 && (
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6">Characters</Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} justifyContent={"center"}>
             {characters.map((character, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper
