@@ -53,7 +53,7 @@ export default function CharacterPage(props) {
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        {character.name}
+        {character.name?.toLowerCase()}
       </Typography>
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={4}>
@@ -104,9 +104,7 @@ export default function CharacterPage(props) {
         Homeworld
       </Typography>
       {/* <Link to={`/planet/${character.homeworld}`}> */}
-        <PlanetCard
-          planet={{ name: homeworld.name, id: character.homeworld }}
-        />
+      <PlanetCard planet={{ name: homeworld.name, id: character.homeworld }} />
       {/* </Link> */}
 
       <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>

@@ -10,7 +10,7 @@ export default function PlanetCard({ planet }) {
         href={`/planet/${planet.id}`}
         className="lightsaber"
       >
-        <CardContent>{planet.name}</CardContent>
+        <CardContent>{planet.name?.toLowerCase()}</CardContent>
       </CardActionArea>
     </Card>
   );

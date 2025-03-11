@@ -15,9 +15,7 @@ export default function Film() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/films/${id}`
-        );
+        const response = await fetch(`http://localhost:3000/api/films/${id}`);
         if (!response.ok) {
           throw new Error("Data could not be fetched!");
         }
@@ -65,37 +63,39 @@ export default function Film() {
     fetchCharacterData();
   }, [id]);
 
-
   return (
     <Container sx={{ mt: 4 }}>
       <Box sx={{ mb: 2 }}>
-        <Paper elevation={4} sx={{ p: 2, textAlign: 'center', backgroundColor: '#f5f5f5' }}>
+        <Paper
+          elevation={4}
+          sx={{ p: 2, textAlign: "center", backgroundColor: "#f5f5f5" }}
+        >
           <h2>{film.title}</h2>
         </Paper>
       </Box>
       <Box sx={{ mb: 2 }}>
-        <Paper elevation={3} sx={{ p: 2, backgroundColor: '#e0f7fa' }}>
-          <strong>Description:</strong> {film.opening_crawl}
+        <Paper elevation={3} sx={{ p: 2, backgroundColor: "#e0f7fa" }}>
+          <strong>Description:</strong> {film.opening_crawl?.toLowerCase()}
         </Paper>
       </Box>
       <Box sx={{ mb: 2 }}>
-        <Paper elevation={2} sx={{ p: 2, backgroundColor: '#e8f5e9' }}>
+        <Paper elevation={2} sx={{ p: 2, backgroundColor: "#e8f5e9" }}>
           <strong>Director:</strong> {film.director}
         </Paper>
-        <Paper elevation={2} sx={{ p: 2, backgroundColor: '#e8f5e9', mt: 1 }}>
+        <Paper elevation={2} sx={{ p: 2, backgroundColor: "#e8f5e9", mt: 1 }}>
           <strong>Release Date:</strong> {film.release_date}
         </Paper>
       </Box>
       <Box sx={{ mb: 2 }}>
-        <Paper elevation={1} sx={{ p: 2, backgroundColor: '#fff3e0' }}>
+        <Paper elevation={1} sx={{ p: 2, backgroundColor: "#fff3e0" }}>
           <strong>Characters:</strong> <CharacterFeed filmId={id} />
         </Paper>
       </Box>
       <Box sx={{ mb: 2 }}>
-        <Paper elevation={1} sx={{ p: 2, backgroundColor: '#fff3e0' }}>
+        <Paper elevation={1} sx={{ p: 2, backgroundColor: "#fff3e0" }}>
           <strong>Planets:</strong> <PlanetFeed filmId={id} />
         </Paper>
       </Box>
     </Container>
   );
-};
+}
