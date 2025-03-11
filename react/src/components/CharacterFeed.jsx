@@ -11,7 +11,7 @@ export default function CharacterFeed(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/character/`);
+        const response = await fetch(`http://localhost:3000/api/characters/`);
         if (!response.ok) {
           throw new Error("Data could not be fetched!");
         }

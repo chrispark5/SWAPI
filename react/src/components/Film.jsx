@@ -42,7 +42,7 @@ export default function Film() {
         const json_response = await response.json();
         setPlanets(json_response);
       } catch (error) {
-        console.error("Error fetching films:", error);
+        console.error("Error fetching films by planet:", error);
       }
     };
 
@@ -57,7 +57,7 @@ export default function Film() {
         const json_response = await response.json();
         setCharacter(json_response);
       } catch (error) {
-        console.error("Error fetching characters:", error);
+        console.error("Error fetching films by character:", error);
       }
     };
 
