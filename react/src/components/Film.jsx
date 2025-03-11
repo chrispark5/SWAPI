@@ -6,7 +6,7 @@ import CharacterFeed from "./CharacterFeed";
 import PlanetFeed from "./PlanetFeed";
 import { useParams } from "react-router-dom";
 
-const Film = () => {
+export default function Film() {
   const [film, setFilm] = useState({});
   const [planets, setPlanets] = useState([]);
   const [characters, setCharacter] = useState([]);
@@ -99,5 +99,3 @@ const Film = () => {
     </Container>
   );
 };
-
-export default Film;

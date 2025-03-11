@@ -1,6 +1,8 @@
 import { Box, Container, Paper, Typography, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import FilmCard from "./FilmCard.jsx";
+import CharacterCard from "./CharacterCard.jsx";
 
 export default function PlanetFeed() {
   const [planet, setPlanet] = useState({});
@@ -127,6 +129,7 @@ export default function PlanetFeed() {
                   }}
                 >
                   <Typography variant="body1">{film.title}</Typography>
+                  <FilmCard film={{ name: film.title, id: film.id }} />
                 </Paper>
               </Grid>
             ))}
@@ -149,6 +152,8 @@ export default function PlanetFeed() {
                   }}
                 >
                   <Typography variant="body1">{character.name}</Typography>
+                  <CharacterCard 
+                  character={{ name: character.name, id: character.id }} />
                 </Paper>
               </Grid>
             ))}
