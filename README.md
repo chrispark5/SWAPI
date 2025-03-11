@@ -12,7 +12,7 @@ Setup Instructions
 1. Download JSON Data
 Download the JSON data from the following GitHub repository:
 
-Star Wars JSON Data
+[Star Wars JSON Data](https://github.com/olaekdahl/swapi/tree/master/json-data)
 
 2. Import Data to MongoDB
 
