@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 
 const Film = () => {
   const [film, setFilm] = useState({});
+  const [planets, setPlanets] = useState([]);
+  const [characters, setCharacter] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,6 +28,41 @@ const Film = () => {
       }
     };
     fetchData();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchPlanetData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/films/${id}/planets`
+        );
+        if (!response.ok) {
+          throw new Error("Film data could not be fetched!");
+        }
+        const json_response = await response.json();
+        setPlanets(json_response);
+      } catch (error) {
+        console.error("Error fetching films:", error);
+      }
+    };
+
+    const fetchCharacterData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/films/${id}/characters`
+        );
+        if (!response.ok) {
+          throw new Error("Character data could not be fetched!");
+        }
+        const json_response = await response.json();
+        setCharacter(json_response);
+      } catch (error) {
+        console.error("Error fetching characters:", error);
+      }
+    };
+
+    fetchPlanetData();
+    fetchCharacterData();
   }, [id]);
 
 
@@ -51,12 +88,12 @@ const Film = () => {
       </Box>
       <Box sx={{ mb: 2 }}>
         <Paper elevation={1} sx={{ p: 2, backgroundColor: '#fff3e0' }}>
-          <strong>Characters:</strong> <CharacterFeed characters={film.characters} />
+          <strong>Characters:</strong> <CharacterFeed filmId={id} />
         </Paper>
       </Box>
       <Box sx={{ mb: 2 }}>
         <Paper elevation={1} sx={{ p: 2, backgroundColor: '#fff3e0' }}>
-          <strong>Planets:</strong> <PlanetFeed planets={film.planets} />
+          <strong>Planets:</strong> <PlanetFeed filmId={id} />
         </Paper>
       </Box>
     </Container>
