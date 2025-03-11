@@ -55,7 +55,7 @@
 
 html,
 body {
-  cursor: url("lightsaber.png"), default;
+  cursor: url("blue.png"), default;
   font-family: "Star Wars", sans-serif !important;
   background-image: url("stars-background.jpg"); /* Starry background */
   background-size: cover;
@@ -77,11 +77,22 @@ button {
   color: #ffd700;
   border: 2px solid #ffd700;
   padding: 0.5em 1em;
-  cursor: pointer;
   transition: background-color 300ms, color 300ms;
 }
 
 button:hover {
   background-color: #ffd700;
   color: #000;
+}
+
+.lightsaber {
+  cursor: url("blue.png"), default !important;
+  border: 2px solid #000; /* Default border color */
+  transition: border-color 300ms, box-shadow 300ms;
+}
+
+.lightsaber:hover {
+  border-color: #00bfff; /* Blue for Jedi lightsaber */
+  box-shadow: 0 0 10px #00bfff; /* Blue glow effect */
+  cursor: url("blue.png"), default !important;
 }
