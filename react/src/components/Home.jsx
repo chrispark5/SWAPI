@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Character List
+        Character List <i className="fa-solid fa-jedi"></i>
       </Typography>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
         {data.map((character) => (
@@ -38,7 +38,7 @@ export default function Home() {
             <CharacterCard character={character} />
           </div>
         ))}
-    </div>
+      </div>
     </Container>
   );
 }

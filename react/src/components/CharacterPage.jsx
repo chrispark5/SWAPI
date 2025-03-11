@@ -103,11 +103,11 @@ export default function CharacterPage(props) {
       <Typography variant="h5" component="h2" gutterBottom>
         Homeworld
       </Typography>
-      <Link to={`/planet/${character.homeworld}`}>
+      {/* <Link to={`/planet/${character.homeworld}`}> */}
         <PlanetCard
           planet={{ name: homeworld.name, id: character.homeworld }}
         />
-      </Link>
+      {/* </Link> */}
 
       <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>
         Films appeared in

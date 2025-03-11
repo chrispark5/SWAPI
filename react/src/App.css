@@ -88,11 +88,17 @@ button:hover {
 .lightsaber {
   cursor: url("blue.png"), default !important;
   border: 2px solid #000; /* Default border color */
-  transition: border-color 300ms, box-shadow 300ms;
+  transition: border-color 300ms ease, box-shadow 300ms ease, color 300ms ease;
+  color: #000;
 }
 
 .lightsaber:hover {
   border-color: #00bfff; /* Blue for Jedi lightsaber */
-  box-shadow: 0 0 10px #00bfff; /* Blue glow effect */
+  box-shadow: 0 0 40px #00bfff; /* Blue glow effect */
   cursor: url("blue.png"), default !important;
+  color: #00bfff;
+}
+
+#root {
+  cursor: url("lightsaber.png"), default !important;
 }
