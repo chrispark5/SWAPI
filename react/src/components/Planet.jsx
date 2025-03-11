@@ -128,7 +128,6 @@ export default function Planet() {
                     textAlign: "center",
                   }}
                 >
-                  <Typography variant="body1">{film.title}</Typography>
                   <FilmCard film={{ title: film.title, id: film.id }} />
                 </Paper>
               </Grid>
@@ -151,7 +150,6 @@ export default function Planet() {
                     textAlign: "center",
                   }}
                 >
-                  <Typography variant="body1">{character.name}</Typography>
                   <CharacterCard 
                   character={{ name: character.name, id: character.id }} />
                 </Paper>
