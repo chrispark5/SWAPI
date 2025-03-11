@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import FilmFeed from "./FilmFeed";
 import PlanetFeed from "./PlanetFeed";
 import PlanetCard from "./PlanetCard";
+import { Link } from "react-router-dom";
 
 export default function CharacterPage(props) {
   const [character, setCharacter] = useState({});
@@ -102,7 +103,11 @@ export default function CharacterPage(props) {
       <Typography variant="h5" component="h2" gutterBottom>
         Homeworld
       </Typography>
-      <PlanetCard planet={{ name: homeworld.name, id: character.homeworld }} />
+      <Link to={`/planet/${character.homeworld}`}>
+        <PlanetCard
+          planet={{ name: homeworld.name, id: character.homeworld }}
+        />
+      </Link>
 
       <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>
         Films appeared in

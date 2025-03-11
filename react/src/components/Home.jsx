@@ -38,7 +38,7 @@ export default function Home() {
             <CharacterCard character={character} />
           </div>
         ))}
-      </div>
+    </div>
     </Container>
   );
 }
