@@ -8,7 +8,7 @@ Before you begin, ensure you have the following installed on your machine:
 Node.js, npm, &
 MongoDB
 
-Setup Instructions
+## Setup Instructions
 1. ### Download JSON Data
 Download the JSON data from the following GitHub repository:
 
