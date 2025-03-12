@@ -4,9 +4,13 @@ import CardActionArea from "@mui/material/CardActionArea";
 
 export default function PlanetCard({ planet }) {
   return (
-    <Card variant="outlined">
-      <CardActionArea component="a" href={`/planet/${planet.id}`}>
-        <CardContent>{planet.name}</CardContent>
+    <Card variant="outlined" className="lightsaber">
+      <CardActionArea
+        component="a"
+        href={`/planet/${planet.id}`}
+        className="lightsaber"
+      >
+        <CardContent>{planet.name?.toLowerCase()}</CardContent>
       </CardActionArea>
     </Card>
   );
