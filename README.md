@@ -49,7 +49,7 @@ Start the Express server, then navigate back to the React directory and start th
 
 
 5. ### Access the Application
-Open your web browser and go to http://localhost:3000 to view the Star Wars application.
+Open your web browser and go to http://localhost:5173 to view the Star Wars application.
 #### Features
 
 1. Characters: View a list of Star Wars characters with detailed information.
