@@ -29,8 +29,17 @@ Replace c:/swapi-data/films.json with the path to your downloaded JSON files.
 
 Repeat the above command for other collections like characters and planets by changing the collection name and file path accordingly.
 
+3. ### Setting Up Environment Variables
 
-3. ### Install Dependencies
+Create one .env file directly inside the server directory. Add these variables to your file.
+
+    MONGO_DB_URL = 'mongodb://localhost:27017'
+    MONGO_DB = 'swapi'
+
+If your MongoDB instance is running on a different host or port, update MONGO_DB_URL accordingly.
+If you're using a different database name, replace 'swapi' in MONGO_DB with your desired name.
+
+4. ### Install Dependencies
 Navigate to both the React frontend and the Express server directories and install the necessary dependencies.
     
     cd react
@@ -39,8 +48,8 @@ Navigate to both the React frontend and the Express server directories and insta
     npm install
 
 
-4. ### Run the Application
-Start the Express server, then navigate back to the React directory and start the React application:
+5. ### Run the Application
+Inside the server directory start the Express server, then navigate back to the React directory and start the React application:
 
 
     npm start
@@ -48,7 +57,7 @@ Start the Express server, then navigate back to the React directory and start th
     npm run dev
 
 
-5. ### Access the Application
+6. ### Access the Application
 Open your web browser and go to http://localhost:5173 to view the Star Wars application.
 #### Features
 
